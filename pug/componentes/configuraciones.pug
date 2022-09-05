@@ -1,0 +1,12 @@
+-var titulo = "Título principal"
+-var subtitulos = ["Subtítulo 1", "Subtítulo 2", "Subtítulo 3"]
+-var opciones = [{name: "Inicio", url: "./index.html"}, {name: "Biografía", url: "./biography.html"}]
+-var usuario = "Daniel"
+-var enlaces = ["Acerca", "Noticias", "Contacto"]
+mixin caja(imagen, titulo, contenido)
+    .caja
+        .caja__imagen
+            img(src="images/"+imagen, alt="")
+        .caja__contenido
+            h3 #{titulo}
+            p #{contenido}
