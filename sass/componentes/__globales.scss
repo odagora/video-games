@@ -1,0 +1,88 @@
+$fuente1: 'Lato', sans-serif;
+$fuente2: 'Oswald', sans-serif;
+$color-primario: #333333;
+$color-claro: #FFFFFF;
+$color-secundario: #8841DA;
+$color-variacion: #3f579a;
+$titles: (h1: 30px, h2: 25px, h3: 12px);
+
+@mixin caja {
+    border-radius: 20px;
+    box-shadow: 0px 20px 33px 0px rgba(0,0,0,0.5);
+    color: $color-primario;
+    background-color: $color-claro;
+}
+
+@mixin titulos($fuente) {
+    @if $fuente==$fuente1 {
+        font-family: $fuente1;
+    } @else {
+        font-family: $fuente2;
+        text-transform: uppercase;
+    }
+}
+
+@mixin mode-background ($color) {
+	@if $color == $color-primario {
+			background-color: $color-primario;
+			color: $color-claro;
+			.perfil__nombre{
+				color: $color-secundario;
+				@include titulos($fuente2);
+			}
+
+			.perfil__titulo{
+				color: $color-variacion;
+				@include titulos($fuente2);
+			}
+
+			.perfil__boton {
+				color: $color-claro;
+				background-color: $color-variacion;
+			}
+
+	} @else  {
+			background-color: $color-claro;
+			color: $color-primario;
+		.perfil__nombre{
+			color: $color-secundario;
+			@include titulos($fuente2);
+		}
+
+		.perfil__titulo{
+			color: $color-variacion;
+			@include titulos($fuente2);
+		}
+
+		.perfil__boton {
+			color: $color-claro;
+			background-color: $color-primario;
+		}
+	}
+}
+
+@function get-opacity($color, $nivel){
+    @return rgba($color, $nivel);
+}
+
+@each $header, $size in $titles {
+    #{$header} {
+        font-size: $size;
+        margin: 0;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: $fuente1;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
