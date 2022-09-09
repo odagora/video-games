@@ -7,7 +7,7 @@ const views = ["index", "profile", "search", "article"];
 module.exports = {
     entry: "./src/index.js",
     output: {
-        path: path.resolve(__dirname, "../dist"),
+        path: path.resolve(__dirname, "dist"),
         filename: "js/[name].bundle.js",
         assetModuleFilename: "images/[hash][ext][query]",
         clean: true,
@@ -16,7 +16,7 @@ module.exports = {
         rules: [
             {
                 test: /\.pug$/,
-                use: ["html-loader", "pug-html-loader"]
+                    use: ["html-loader", "pug-html-loader"]
             },
             {
                 test: /\.(sa|sc|c)ss$/i,
@@ -40,5 +40,16 @@ module.exports = {
             filename: "css/[name]-styles.css",
             chunkFilename: "[id].css",
         }),
-    ]
+    ],
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'dist'),
+            watch: true
+        },
+        watchFiles: path.join(__dirname, "./**"),
+        compress: true,
+        historyApiFallback: true,
+        port: 3006,
+        open: true,
+    },
 }
